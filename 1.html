@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Калькулятор любви</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #ffcccb;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            margin-top: 50px;
+            background: white;
+            padding: 20px;
+            display: inline-block;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input, button {
+            font-size: 18px;
+            padding: 10px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #ff4081;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #e91e63;
+        }
+        #result {
+            font-size: 22px;
+            color: #d63384;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Калькулятор любви 💘</h1>
+    <div class="container">
+        <p>Введите имя партнера и узнайте ваш уровень любви!</p>
+        <input type="text" id="partnerName" placeholder="Имя партнера">
+        <button id="calculateButton">Посчитать</button>
+        <p id="result"></p>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            document.getElementById('calculateButton').addEventListener('click', calculateLove);
+        });
+
+        function calculateLove() {
+            let partnerName = document.getElementById("partnerName").value.trim();
+            if (partnerName === "") {
+                document.getElementById("result").textContent = "Введите имя партнера!";
+                return;
+            }
+            
+            if (partnerName.toLowerCase() !== "илья") {
+                document.getElementById("result").textContent = 
+                    `Ты что, сдурела? Кто такой «${partnerName}»? Сейчас вычислим данного абонента.`;
+                return;
+            }
+
+            const messages = [
+                "100% совпадение! Ты — моя судьба! 💖",
+                "Без сомнений, это настоящая любовь! ❤️",
+                "Ты и Илья — идеальная пара! 💕",
+                "Вас связывает магия любви! ✨",
+                "Вы созданы друг для друга! 💞"
+            ];
+            
+            let randomMessage = messages[Math.floor(Math.random() * messages.length)];
+            document.getElementById("result").textContent = randomMessage;
+        }
+    </script>
+</body>
+</html>
